@@ -11,21 +11,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using KeyAuth;
 
-// Before you look at this source and think "Oh yes it's another weird comm source" - you are right, but I had 1 goal during writing this - 
-// USE KEYAUTH ONLY, without any middleman server - of course it's hard to have a secure loader especially when you have your auth (data) directly in your app.
-
-// If you're using KeyAuth and need a secure loader, remember what a loader is. It loads a cheat. That's all. You do NOT need all of this antidebug bollocks
-// Just remember to have a secure server side with session checks to verify a user is logged in. Have your module encrypted on your server and decrypt-
-// at runtime. Make sure to require auth validation when requesting the module. KeyAuth does this well.
-
-// Another tip is: do not fight people trying to abuse your loader by trying to jmp, nop your auth inputs, because your loader has an auth and needs a validated-
-// session to actually request X module.. So what do they get?? They get a loader that doesn't do its job.
-
-// Yes this source is somewhat pasted, like little functs in misc, then some are messy and not efficient at all. I did this because there's no need.
-
-
-
-
 
 // SETUP GUIDE: Write your auth vars like so: 
 /*
@@ -43,6 +28,12 @@ using KeyAuth;
         misc.XorEncrypt(auth.Download(""), auth.var("module_decryption_key")); 
 
         and write it to disk, then upload to keyauth.
+
+
+
+
+
+        Also make sure to include the hashes of your dlls (pngs), upload the status, loader status and also the decryption key that you encrypt the actual dll with
 
  */
 
